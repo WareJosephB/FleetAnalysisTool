@@ -1,16 +1,16 @@
-fileLocation = 'SouthandVale_Mileage_Data_latestV3 .csv'
+fileLocation = 'filename.csv'
 encoding = 'cp1252' #Default is 'UTF8' if throws error try 'cp1252'
-companyName = 'South and Vale District Council' #For Chart Titles
+companyName = 'Customer Name' #For Chart Titles
 
-vehicleIdentifier = 'SURNAME' #These should be the column name of the correct column
-mileageColumn = 'TOTAL_MILES_CLAIMED'
+vehicleIdentifier = 'VEHICLE_IDENT' #These should be the column name of the correct column
+mileageColumn = 'TOTAL_MILES'
 dateColumn = 'JOURNEY_DATE'
 departmentColumn = 'DEPARTMENT' #Needed if showBarChart is True, otherwise ignored
 
 
 fuelType = 'petrol'
 costOfFuel = 549.6 # Supermarket average for Petrol: 549.6 pence/Gallon, Diesel 587.4 pence/Gallon [The AA, April 2019] 
-CO2perMiles = 120.1 * 1.6093 # 120.1: Estimate 2016, best year on record for worst case scenario
+CO2perMiles = 120.1 * 1.6093 # 120.1: Estimate 2016, best year on record for worst case scenario, in g CO2/mile
 averageMPG = 51.7 # 51.7 for Petrol, 61.2 for Diesel
 
 energyCost = 7 #cost in pence per kWh: 7p/kW [home, night], 14p/kW [home, day]
