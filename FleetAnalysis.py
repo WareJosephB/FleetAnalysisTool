@@ -63,7 +63,7 @@ else:
 #dayArray = dayArray.reindex(index=dayArray.index.to_series().str[-2:].astype(int).sort_values().index)  '''Sorts on last 2 characters as ints'''
 
 if showBarChart:
-    plot.showBarChart(fleetFile, departmentColumn, mileageColumn, milesOverPercentage, companyName, width_px, height_px, dpi, rotate_xlabels_bar, saveBarChart)
+    plot.showBarChart(fleetFile, departmentColumn, mileageColumn, milesOverPercentage, companyName, width_px, height_px, dpi, rotate_xlabels_bar, saveBarChart, label_spacing)
 
 if showBoxPlot:
     plot.showBoxPlot(dayArray, rotatePlot, width_px, height_px, dpi, garage, labelX, companyName, rotate_xlabels_box, saveBoxPlot)

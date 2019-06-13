@@ -31,7 +31,7 @@ def showBoxPlot(dayArray, rotatePlot, width_px, height_px, dpi, garage, labelX, 
     if saveBoxPlot:
         fig1.savefig(companyName+' Fleet Boxplot '+ str(datetime.date.today())+'.png', dpi=dpi, bbox_inches="tight")
     
-def showBarChart(fleetFile, departmentColumn, mileageColumn, milesOverPercentage, companyName, width_px, height_px, dpi, rotate_xlabels_bar, saveBarChart):
+def showBarChart(fleetFile, departmentColumn, mileageColumn, milesOverPercentage, companyName, width_px, height_px, dpi, rotate_xlabels_bar, saveBarChart, label_spacing):
     departmentArray = fleetFile.groupby(departmentColumn)[mileageColumn].agg(lambda x: 100*(1-sum(x>milesOverPercentage)/sum(x>0)))  
     fig1, ax1 = plt.subplots()
     ax1.set_title(companyName + " journeys under " +str(milesOverPercentage)+" miles: " + str(datetime.date.today()))
