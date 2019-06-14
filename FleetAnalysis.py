@@ -28,7 +28,7 @@ class generator:
         self.company = company
         self.email = email
 
-owner = generator('Jake Harrison', '[ui!]uk', 'Jake.Harrison@ui-uk.city')
+owner = generator('name', 'company', 'name@company')
 
 showBarChart = False
 saveBarChart = False
