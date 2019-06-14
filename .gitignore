@@ -106,3 +106,4 @@ venv.bak/
 # test files and outputs in working directory
 *.csv
 *.png
+*.pdf

@@ -29,3 +29,13 @@ def showReport(dayArray, averageMPG, energyCost, garage, fuelType, CO2perMiles, 
     
     for vehicle in garage:
         print ("For the "+vehicle.name+", £"+str(int(100*energyCost*totalMiles/vehicle.kWperMile)/100))
+
+def reportText():
+    returnText = ''
+    returnText += 'Total: '+str(int(totalMiles)) + ' miles; burning an estimated '+str(int(estimatedFuelBurnt*100)/100)+' gallons of '+fuelType+' and releasing an estimated '+CO2Parser(CO2perMiles*totalMiles)+' of CO2.'
+    returnText += '\n'
+    returnText += 'At current costs: £'+str(int(estimatedFuelBurnt*costOfFuel)/100) + ' of '+fuelType+' or claimable from the HMRC: £'+str(int(totalMiles*45)/100)
+    returnText += '\n'
+    for vehicle in garage:
+        returnText += "For the "+vehicle.name+", £"+str(int(100*energyCost*totalMiles/vehicle.kWperMile)/100)
+    return returnText
