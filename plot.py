@@ -1,19 +1,20 @@
 import matplotlib.pyplot as plt
 import datetime
+import constants
 
 def add_value_labels(ax, spacing):
     for rect in ax.patches:
         ax.annotate("{:.1f}".format(rect.get_height()),(rect.get_x() + rect.get_width() / 2, rect.get_height()), xytext=(0, spacing),
                     textcoords="offset points", ha='center', va='bottom')
 
-def showBoxPlot(dayArray, rotatePlot, width_px, height_px, dpi, garage, labelX, companyName, rotate_xlabels_box, saveBoxPlot):
+def showBoxPlot(dayArray, rotatePlot, width_px, height_px, dpi, labelX, companyName, rotate_xlabels_box, saveBoxPlot):
     X=(0, len(dayArray)+0.5)
     fig1, ax1 = plt.subplots()
     fig1.set_size_inches(width_px/dpi, height_px/dpi)
     if rotatePlot:
         spacing = 0
         dayArray.T.boxplot(vert=False)
-        for vehicle in garage:
+        for vehicle in constants.garage:
             Y=(vehicle.mileRange,vehicle.mileRange)    
             ax1.plot(Y,X)
             if rotate_xlabels_box[0]:
@@ -23,7 +24,7 @@ def showBoxPlot(dayArray, rotatePlot, width_px, height_px, dpi, garage, labelX, 
             spacing += labelX
     else:
         dayArray.T.boxplot()
-        for vehicle in garage:
+        for vehicle in constants.garage:
             Y=(vehicle.mileRange,vehicle.mileRange)    
             ax1.plot(X,Y)
             ax1.text(labelX, vehicle.mileRange, vehicle.name)
