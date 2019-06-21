@@ -107,3 +107,11 @@ venv.bak/
 *.csv
 *.png
 *.pdf
+
+# To prevent overwriting files 
+constants.py
+citationsList.txt
+description_bar.txt
+description_box.txt
+intro_explain.txt
+outtro_explain.txt
