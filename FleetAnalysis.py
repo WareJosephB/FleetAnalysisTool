@@ -28,7 +28,7 @@ milesOverPercentage = 150 # Range to show percentage of journeys under this dist
 label_spacing = 5
 rotate_bar = True
 
-showBoxPlot = True
+showBoxPlot = False
 saveBoxPlot = True
 rotate_xlabels_box = [True, -90] #True or False, note capital, degrees to rotate: 0 = horizontal, 90 = up
 labelX = -1 #Where in the x-axis the labels for the example EV ranges should be

@@ -2,6 +2,7 @@ from fpdf import FPDF
 import datetime
 import report as numeric
 import constants
+from lifeComparison import returnComparison as lifeComparison
 
 def report(companyName, buffer, milesOverPercentage, includeBox, includeBar, dayArray, includeReport):
     reportPdf = FPDF()
@@ -10,7 +11,6 @@ def report(companyName, buffer, milesOverPercentage, includeBox, includeBar, day
     if includeReport:
         numericPage(reportPdf, dayArray, companyName)
         reportPdf.ln(5)
-        reportPdf.write(5, '* estimated')
     descriptionPage(reportPdf, 'intro_explain.txt')
     if includeBox:
         chartPage(reportPdf, companyName+' Fleet Boxplot '+ str(datetime.date.today())+'.png', 'description_box.txt')
@@ -67,3 +67,7 @@ def numericPage(reportPdf, dayArray, companyName):
     reportPdf.add_page()
     reportPdf.set_font('Courier', '', 14)
     reportPdf.write(5, str(numeric.reportText(dayArray, companyName)))
+    reportPdf.write(5, '\n* estimated')
+    reportPdf.ln(10)
+    reportPdf.set_font('Courier', '', 10)
+    reportPdf.write(5, lifeComparison())   

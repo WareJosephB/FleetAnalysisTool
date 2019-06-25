@@ -14,7 +14,7 @@ def showBoxPlot(dayArray, rotatePlot, width_px, height_px, dpi, labelX, companyN
     if rotatePlot:
         spacing = 0
         dayArray.T.boxplot(vert=False)
-        for vehicle in constants.garage:
+        for vehicle in constants.box_garage:
             Y=(vehicle.mileRange,vehicle.mileRange)    
             ax1.plot(Y,X)
             if rotate_xlabels_box[0]:
@@ -24,7 +24,7 @@ def showBoxPlot(dayArray, rotatePlot, width_px, height_px, dpi, labelX, companyN
             spacing += labelX
     else:
         dayArray.T.boxplot()
-        for vehicle in constants.garage:
+        for vehicle in constants.box_garage:
             Y=(vehicle.mileRange,vehicle.mileRange)    
             ax1.plot(X,Y)
             ax1.text(labelX, vehicle.mileRange, vehicle.name)

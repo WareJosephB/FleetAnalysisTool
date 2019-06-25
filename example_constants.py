@@ -5,6 +5,8 @@ averageMPG = 51.7 # 51.7 for Petrol, 61.2 for Diesel
 
 energyCost = 14 #cost in pence per kWh: 7p/kW [home, night], 14p/kW [home, day]
 
+VAT = 20 # %
+
 class generator:
     def __init__(self, name, company, email):
         self.name = name
@@ -23,4 +25,26 @@ example_EV_1=EV("Nissan Leaf e+", 155, 385)
 example_EV_2=EV("Tesla Model 3 SR", 135, 340)
 example_EV_3=EV("Kia e-niro", 165, 385)
 
-garage = [example_EV_1, example_EV_2, example_EV_3]
+box_garage = [example_EV_1, example_EV_2, example_EV_3]
+
+class vehicle:
+    def __init__(self, name, vehicleCost, includesVAT, yearlyCosts, oneOffCosts, fuelCosts, fuelConsumption, otherCostsExplain=''):
+        self.name = name
+        self.yearlyCosts = yearlyCosts
+        self.oneOffCosts = oneOffCosts
+        self.fuelCosts = fuelCosts
+        self.fuelConsumption = fuelConsumption
+        self.otherCostsExplain = otherCostsExplain
+        
+        if includesVAT:
+            self.includesVAT = vehicleCost
+            self.sansTax = float("{:.2f}".format(vehicleCost * 100 / (100 + VAT)))
+            
+        else:
+            self.sansTax = vehicleCost
+            self.includesVAT = float("{:.2f}".format(vehicleCost * (100 + VAT) / 100))
+
+ICE = vehicle("2019 Renault Clio", 14000, True, 786, 0, 586, 70.6)
+EV = vehicle("2019 Renault Zoe", 21000, True, 699, 250, 14, 1/0.255, 'Charge Point installation (£250)')
+
+comp_garage = [ICE, EV]
