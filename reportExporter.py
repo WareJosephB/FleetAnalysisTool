@@ -8,23 +8,23 @@ def report(companyName, buffer, milesOverPercentage, includeBox, includeBar, day
     reportPdf = FPDF()
     reportPdf.set_auto_page_break(0)
     titlePage(companyName, buffer, reportPdf)
+    descriptionPage(reportPdf, 'intro_explain.txt')
     if includeReport:
         numericPage(reportPdf, dayArray, companyName)
         reportPdf.ln(5)
-    descriptionPage(reportPdf, 'intro_explain.txt')
     if includeBox:
         chartPage(reportPdf, companyName+' Fleet Boxplot '+ str(datetime.date.today())+'.png', 'description_box.txt')
-        reportPdf.set_font('Arial', 'I', 8)
-        with open('citationsList.txt', 'r') as fd:
-            
-            lines = fd.read().splitlines()
-            reportPdf.set_y(-5-(5*len(lines)))
-            for line in lines:
-                reportPdf.cell(0, 10, line)
-                reportPdf.ln(5)
     if includeBar:
         chartPage(reportPdf, companyName+' Fleet Boxplot '+ str(datetime.date.today())+'.png', 'description_bar.txt')    
     descriptionPage(reportPdf, 'outtro_explain.txt')
+    reportPdf.add_page()
+    reportPdf.set_font('Arial', 'I', 8)
+    with open('citationsList.txt', 'r') as fd:
+        lines = fd.read().splitlines()
+        reportPdf.set_y(-5-(5*len(lines)))
+        for line in lines:
+            reportPdf.cell(0, 10, line)
+            reportPdf.ln(5)
     reportPdf.output(companyName+ ' HelloEV analysis.pdf', 'F')
 
 def titlePage(companyName, buffer, reportPdf):

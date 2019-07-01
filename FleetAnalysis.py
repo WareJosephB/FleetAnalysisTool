@@ -14,8 +14,8 @@ dateColumn = 'THEDATE'
 
 departmentColumn = 'DEPARTMENT' #Needed if showBarChart is True, otherwise ignored
 
-showReport = False
-generateReport = True
+showReport = True
+generateReport = False
 includeBox = True
 includeBar = False
 includeReport = True
@@ -56,7 +56,7 @@ if showBoxPlot:
     plot.showBoxPlot(dayArray, rotate_box, width_px, height_px, dpi, labelX, companyName, rotate_xlabels_box, saveBoxPlot)
 
 if showReport:
-    print(report.reportText(dayArray))
+    print(report.reportText(dayArray, companyName))
 
 if generateReport:
     reportExporter.report(companyName, buffer, milesOverPercentage, includeBox, includeBar, dayArray, includeReport)
